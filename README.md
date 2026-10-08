@@ -25,3 +25,28 @@ The running time is O(n log n):
 - One pass to select compatible deliveries: O(n)
 
 Merge sort is the dominant term, so the overall running time is O(n log n).
+
+## Part 1B: Minimum Number of Drivers
+
+This implementation is in `task_1b.py`. It reads delivery data from `./data/deliveries.txt` and the six required test cases from `./data/test_cases_1b.txt`. It sorts the deliveries by earliest start time with merge sort, then assigns each delivery to a driver using a min-heap (priority queue). After each run, it prints each driver's schedule and the minimum number of drivers required.
+
+**1. What information is stored in the priority queue?**
+
+The priority queue stores one entry per driver. Each entry is a pair with the data `(finish time, driver ID)`, with `finish time` being the finish time of the most recent delivery for the driver while `driver ID` is the driver's index. The heap is ordered by finish time, so the driver who becomes available the soonest is always found at the front of the priority queue.
+
+**2. How is a driver selected for each new delivery?**
+
+Deliveries are processed in order of start time. For each delivery, the algorithm checks the driver at the top of the heap (since this driver becomes available the earliest). If that driver's finish time is at or before the new delivery's start time (`finish <= start`), that driver takes the delivery. Otherwise, every driver is still busy, so a new driver is added. After the assignment, the driver is put back into the heap with their new finish time.
+
+**3. Why does this algorithm use the minimum possible number of drivers?**
+
+This algorithm uses the minimum possible number of drivers as new drivers are only added when a delivery starts and every existing driver is currently occupied. If all of the existing drivers are in the middle of a delivery and the new delivery is unable to be handled, that would mean that there are more deliveries happening simultaneously than there are drivers. Since overlapping deliveries cannot share a driver, there must be a number of drivers equivalent to the number of deliveries needed at that moment. Since the algorithm never adds a driver unless this occurs, it never uses more drivers than the largest number of deliveries running at the same time. Thus, this algorithms uses the fewest possible drivers.
+
+**4. What is the running time?**
+
+The running time is O(n log n):
+- Parsing the input file: O(n)
+- Merge sort by start time: O(n log n)
+- There are n deliveries, where each delivery has one heap removal and one heap insertion that each take O(log n): O(n log n)
+
+The sort and the heap operations are O(n log n), so the overall running time is O(n log n).
