@@ -50,3 +50,25 @@ The running time is O(n log n):
 - There are n deliveries, where each delivery has one heap removal and one heap insertion that each take O(log n): O(n log n)
 
 The sort and the heap operations are O(n log n), so the overall running time is O(n log n).
+
+## Part 1C: Interview-Style Variant
+
+This implementation is in `task_1c.py`. It reads delivery data from `./data/deliveries.txt` and the six required test cases from `./data/test_cases_1c.txt`. It uses the same merge sort and greedy selection as Task A to find the largest set of compatible deliveries. Then, the algorithm subtracts that number from the total number of deliveries. After each run, it prints the minimum number of deliveries that must be rejected.
+
+**1. How is this problem related to Task A?**
+
+This problem is related to Task A in that all deliveries that remain after rejecting some deliveries must all be compatible with each other. The most deliveries that can remain is the same amount of compatible deliveries produced in Task A's algorithm. Thus, rejecting as few deliveries as possible is the same problem as keeping as many deliveries as possible, so Task A's algorithm solves it.
+
+**2. If the maximum number of compatible deliveries is k, how many deliveries must be rejected?**
+
+If there are `n` total deliveries in total and `k` is the maximum number of compatible deliveries, then `n - k` deliveries must be rejected.
+
+**3. What is the running time of your algorithm?**
+
+The running time is O(n log n):
+- Parsing the input file: O(n)
+- Merge sort by finish time: O(n log n)
+- One pass to count compatible deliveries: O(n)
+- Subtracting `k` from `n`: O(1)
+
+Merge sort is the dominant term, so the overall running time is O(n log n).
