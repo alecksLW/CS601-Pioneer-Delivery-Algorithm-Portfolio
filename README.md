@@ -72,3 +72,39 @@ The running time is O(n log n):
 - Subtracting `k` from `n`: O(1)
 
 Merge sort is the dominant term, so the overall running time is O(n log n).
+
+## Part 1D: When a Greedy Choice Fails
+
+**1. Deliveries Table**
+
+| Delivery | Ready time Rj | Profit Pj |
+|----------|---------------|-----------|
+| D1 | 0 | 20 |
+| D2 | 0 | 15 |
+| D3 | 1 | 10 |
+
+Let all profits be different and have every ready time be a non-negative integer.
+
+**2. Schedule produced by greedy strategy G**
+
+G prioritizes the deliveries in order of decreasing profit (D1, D2, D3). This means it places each delivery in the earliest open slot at or after its ready time.
+
+- Place D1 (ready time of 0) in slot 0. Delay = 0, so V1 = 20 / (1 + 0) = 20.
+- Place D2 (ready time of 0) in slot 1. Delay = 1, so V2 = 15 / (1 + 1) = 7.5.
+- Place D3 (ready time of 1) in slot 2. Delay = 1, so V3 = 10 / (1 + 1) = 5.
+
+**V(G) = 20 + 7.5 + 5 = 32.5**
+
+**3. A better schedule S**
+
+Let's keep D1 in slot 0, then swap slot 1 to D3 and D2 to slot 2.
+
+- Place D1 in slot 0. Delay = 0, so V1 = 20 / (1 + 0) = 20.
+- Place D3 in slot 1. Delay = 0, so V3 = 10 / (1 + 0) = 10.
+- Place D2 in slot 2. Delay = 2, so V2 = 15 / (1 + 2) = 5.
+
+**V(S) = 20 + 10 + 5 = 35**
+
+**4. Why this proves G is not always optimal**
+
+Since V(S) = 35 is greater than V(G) = 32.5, this means that there exists a better schedule than the one that G produces. Since an optimal strategy can never be beaten by another strategy, this means that G is not always optimal.
