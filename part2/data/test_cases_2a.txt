@@ -1,0 +1,35 @@
+# Test A1
+A 0 0
+B 3 4
+
+# Test A2
+A 0 0
+B 7 2
+C 4 5
+D 5 5
+E 12 2
+F 2 9
+
+# Test A3
+A -3 1
+B -3 11
+C 1 1
+D 2 15
+
+# Test A4
+A -5 -5
+B -5 -2
+C 6 8
+
+# Test E1 (Edge Case: Multiple closest pairs tied)
+A 0 0
+B 1 0
+C 10 10
+D 10 11
+
+# Test E2 (Edge Case: All points share the same x-coordinate)
+A 5 0
+B 5 10
+C 5 3
+D 5 20
+E 5 12
