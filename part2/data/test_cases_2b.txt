@@ -1,0 +1,27 @@
+# Test B1
+planned: A B C D E
+actual: A C D B E
+
+# Test B2
+planned: A B C D
+actual: A B C D
+
+# Test B3
+planned: A B C D
+actual: D C B A
+
+# Test B4
+planned: A
+actual: A
+
+# Test E1 (Edge Case: One adjacent swap)
+planned: A B C D E
+actual: A B D C E
+
+# Test E2 (Edge Case: Invalid input with different delivery IDs)
+planned: A B C
+actual: A B D
+
+# Test E3 (Edge Case: Invalid input with repeated delivery ID)
+planned: A B C
+actual: A B B

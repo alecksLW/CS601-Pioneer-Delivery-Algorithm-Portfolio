@@ -149,9 +149,5 @@ def print_result(result):
 
 if __name__ == "__main__":
 
-    # Runs the algorithm from a file
-    print_result(closest_pair(parse_data("./data/locations.txt")))
-    print()
-
     # Runs all required and additional test cases
     run_req_cases("./data/test_cases_2a.txt")
