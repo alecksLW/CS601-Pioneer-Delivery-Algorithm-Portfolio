@@ -20,13 +20,13 @@ def get_ranks(planned, actual):
 
     # Error handling (>0 deliveries, mismatched lengths, repeating IDs, mismatched IDs)
     if len(planned) == 0:
-        raise ValueError("Error: Need at least one delivery")
+        raise ValueError("Need at least one delivery")
     if len(planned) != len(actual):
-        raise ValueError(f"Error: Planned and actual have different sizes ({len(planned)} and {len(actual)})")
+        raise ValueError(f"Planned and actual have different sizes ({len(planned)} and {len(actual)})")
     if len(set(planned)) != len(planned) or len(set(actual)) != len(actual):
-        raise ValueError("Error: Each delivery ID must appear exactly once")
+        raise ValueError("Each delivery ID must appear exactly once")
     if set(planned) != set(actual):
-        raise ValueError("Error: Planned and actual must contain the same delivery IDs")
+        raise ValueError("Planned and actual must contain the same delivery IDs")
 
     # Calculate each delivery's rank
     rank = {}

@@ -3,20 +3,6 @@
 
 import math
 
-def parse_data(path):
-
-    # Each line is structured as 'id x y'
-    points = []
-    with open(path) as f:
-        for line in f:
-            parts = line.split()
-
-            # Use the first three entries
-            if len(parts) >= 3:
-                points.append((parts[0], int(parts[1]), int(parts[2])))
-    return points
-
-
 def parse_cases(path):
 
     # Each test case begins with a '# Test ...' line, followed by 'id x y' lines
